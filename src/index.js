@@ -44,18 +44,19 @@ fetchBreeds()
   });
 
 // nazwa/temperament/opis/zdj pojawiające się po wybraniu rasy z listy
-breedsEl.addEventListener(`change`, ev => {
-  const breed = ev.target.value;
+breedsEl.addEventListener('change', ev => {
+  breedInfoEl.innerHTML = '';
+  const breedId = ev.target.value;
   showLoader();
 
-  fetchCatByBreed(breed)
+  fetchCatByBreed(breedId)
     .then(cats => {
       const array = cats.map(
         cat =>
           `<h2>${cat.breeds[0].name}</h2>
-        <p>${cat.breeds[0].description}</p>
-          <p>${cat.breeds[0].temperament}</p>
-            <img width="700" height="500" src=${cat.url} />`
+      <p>${cat.breeds[0].description}</p>
+        <p>${cat.breeds[0].temperament}</p>
+          <img width="700" height="500" src=${cat.url} />`
       );
       breedInfoEl.innerHTML = array.join(cats);
       hideError();
