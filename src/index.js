@@ -27,13 +27,21 @@ function hideError() {
   errorEl.style.display = 'none';
 }
 
+function showBreedSelector() {
+  breedsEl.style.display = 'block'
+}
+
+function hideBreedSelector() {
+  breedsEl.style.display = 'none'
+}
 // wybieranie rasy z listy
 fetchBreeds()
   .then(data => {
     const html = data.map(
-      breed => `<option value=${breed.id}> ${breed.name} </option>)`
+      breed => `<option value=${breed.id}> ${breed.name} </option>`
     );
     breedsEl.innerHTML = html;
+    hideBreedSelector();
     hideError();
   })
   .catch(() => {
@@ -41,6 +49,7 @@ fetchBreeds()
   })
   .finally(() => {
     hideLoader();
+    showBreedSelector();
   });
 
 // nazwa/temperament/opis/zdj pojawiające się po wybraniu rasy z listy
