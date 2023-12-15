@@ -9,6 +9,9 @@ const breedInfoEl = document.querySelector('.cat-info');
 const loaderEl = document.querySelector('.loader');
 const errorEl = document.querySelector('.error');
 
+errorEl.style.display = 'none';
+breedsEl.style.display = 'none';
+
 /** @type {HTMLSelectElement | null} */
 
 function showLoader() {
